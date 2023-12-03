@@ -14,28 +14,27 @@ pub fn p1(input: &str) -> i64
             let mut r = 0;
             let mut g = 0;
             let mut b = 0;
-            dbg!(game[1]);
-            let _ = game[1]
+            (game[1]);
+            game[1]
                 .split("; ")
-                .map(|round| {
-                     let _ = round.split(", ").map(
-                          |res| {
+                .for_each(|round| {
+                    let _ = round.split(", ").for_each(
+                        |res| {
 
-                             let rr = res.split(" ").collect::<Vec<&str>>();
-                             let val = rr[0].parse::<i64>().unwrap();
-                             match rr[1] {
-                                 "red" => r = i64::max(r, val),
-                                 "blue" => b = i64::max(b, val),
-                                 "green" => g = i64::max(g, val),
-                                 _ => panic!("this shall never happen"),
-                             };
-                             0
-                         }).collect::<Vec<i64>>();
-                0}).collect::<Vec<i64>>();
+                            let rr = res.split(" ").collect::<Vec<&str>>();
+                            let val = rr[0].parse::<i64>().unwrap();
+                            match rr[1] {
+                                "red" => r = i64::max(r, val),
+                                "blue" => b = i64::max(b, val),
+                                "green" => g = i64::max(g, val),
+                                _ => panic!("this shall never happen"),
+                            };
+                        });
+                });
 
-            dbg!(id, r,g,b)
+            (id, r,g,b)
         })
-        .filter(|(_, r,g,b)| dbg!(dbg!(*r)< 13 && dbg!(*g) <14 && dbg!(*b)<15))
+    .filter(|(_, r,g,b)| ((*r)< 13 && (*g) <14 && (*b)<15))
         .map(|(id, _, _, _)| (id))
         .sum()
 }
@@ -52,28 +51,27 @@ pub fn p2(input: &str) -> i64
             let mut r = 0;
             let mut g = 0;
             let mut b = 0;
-            dbg!(game[1]);
-            let _ = game[1]
+            (game[1]);
+            game[1]
                 .split("; ")
-                .map(|round| {
-                     let _ = round.split(", ").map(
-                          |res| {
+                .for_each(|round| {
+                    let _ = round.split(", ").for_each(
+                        |res| {
 
-                             let rr = res.split(" ").collect::<Vec<&str>>();
-                             let val = rr[0].parse::<i64>().unwrap();
-                             match rr[1] {
-                                 "red" => r = i64::max(r, val),
-                                 "blue" => b = i64::max(b, val),
-                                 "green" => g = i64::max(g, val),
-                                 _ => panic!("this shall never happen"),
-                             };
-                             0
-                         }).collect::<Vec<i64>>();
-                0}).collect::<Vec<i64>>();
+                            let rr = res.split(" ").collect::<Vec<&str>>();
+                            let val = rr[0].parse::<i64>().unwrap();
+                            match rr[1] {
+                                "red" => r = i64::max(r, val),
+                                "blue" => b = i64::max(b, val),
+                                "green" => g = i64::max(g, val),
+                                _ => panic!("this shall never happen"),
+                            };
+                        });
+                    });
 
-            dbg!(id, r,g,b)
+            (id, r,g,b)
         })
-        .map(|(_, r, g, b)| r*g*b)
+    .map(|(_, r, g, b)| r*g*b)
         .sum()
 }
 
